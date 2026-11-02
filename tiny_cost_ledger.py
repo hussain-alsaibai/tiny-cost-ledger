@@ -80,7 +80,7 @@ from collections import defaultdict
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field, asdict
 from enum import Enum
-from typing import IO, Any
+from typing import IO, Any, Callable
 
 
 # ---------------------------------------------------------------------------
@@ -290,7 +290,7 @@ def _entry_from_dict(d: dict[str, Any]) -> CostEntry:
 # Budget — multi-period thresholds + alert hooks
 # ---------------------------------------------------------------------------
 
-AlertFn = Callable[[AlertLevel, Period, float, float], None]
+AlertFn = Callable[[AlertLevel, Period, float, float], None]  # typing.Callable: PEP 585 generics are 3.9+
 
 
 @dataclass
